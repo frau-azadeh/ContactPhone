@@ -22,9 +22,14 @@ namespace ContactPhone
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            dgContacts.AutoGenerateColumns = false;
+
             dgContacts.DataSource = repository.SelectAll();
         }
 
-      
+        private void dgContacts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
