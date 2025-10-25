@@ -32,6 +32,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgContacts = new System.Windows.Forms.DataGridView();
+            this.ContactId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telephon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgContacts)).BeginInit();
             this.SuspendLayout();
@@ -68,13 +74,64 @@
             // 
             this.dgContacts.AllowUserToAddRows = false;
             this.dgContacts.AllowUserToDeleteRows = false;
+            this.dgContacts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgContacts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgContacts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ContactId,
+            this.firstName,
+            this.lastName,
+            this.address,
+            this.mobile,
+            this.telephon});
             this.dgContacts.Location = new System.Drawing.Point(22, 36);
             this.dgContacts.Name = "dgContacts";
             this.dgContacts.ReadOnly = true;
             this.dgContacts.RowTemplate.Height = 24;
             this.dgContacts.Size = new System.Drawing.Size(716, 266);
             this.dgContacts.TabIndex = 0;
+            this.dgContacts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgContacts_CellContentClick);
+            // 
+            // ContactId
+            // 
+            this.ContactId.DataPropertyName = "contactId";
+            this.ContactId.HeaderText = "شماره";
+            this.ContactId.Name = "ContactId";
+            this.ContactId.ReadOnly = true;
+            // 
+            // firstName
+            // 
+            this.firstName.DataPropertyName = "firstName";
+            this.firstName.HeaderText = "نام";
+            this.firstName.Name = "firstName";
+            this.firstName.ReadOnly = true;
+            // 
+            // lastName
+            // 
+            this.lastName.DataPropertyName = "lastName";
+            this.lastName.HeaderText = "نام خانوادگی";
+            this.lastName.Name = "lastName";
+            this.lastName.ReadOnly = true;
+            // 
+            // address
+            // 
+            this.address.DataPropertyName = "address";
+            this.address.HeaderText = "نشانی";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // mobile
+            // 
+            this.mobile.DataPropertyName = "mobile";
+            this.mobile.HeaderText = "شماره همراه";
+            this.mobile.Name = "mobile";
+            this.mobile.ReadOnly = true;
+            // 
+            // telephon
+            // 
+            this.telephon.DataPropertyName = "telephon";
+            this.telephon.HeaderText = "تلفن";
+            this.telephon.Name = "telephon";
+            this.telephon.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -106,6 +163,12 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgContacts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ContactId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mobile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telephon;
     }
 }
 
