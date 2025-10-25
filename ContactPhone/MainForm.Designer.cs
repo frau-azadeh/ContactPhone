@@ -143,7 +143,7 @@
             this.btnAddContact.TabIndex = 3;
             this.btnAddContact.Text = "افزودن";
             this.btnAddContact.UseVisualStyleBackColor = true;
-            this.btnAddContact.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddContact.Click += new System.EventHandler(this.btnAddContact_Click);
             // 
             // btnRefresh
             // 
@@ -172,6 +172,7 @@
             this.Name = "MainForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "دفترچه تلفن";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
