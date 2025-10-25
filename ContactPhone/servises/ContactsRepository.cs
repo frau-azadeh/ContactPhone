@@ -9,6 +9,7 @@ namespace ContactPhone
 {
     class ContactsRepository : IContactsRepository
     {
+        private string connectionString = "Data Source=.; initial Catalog = telContact; Integrated Security=true";
         public bool Delete(int contactId)
         {
             throw new NotImplementedException();
@@ -21,7 +22,12 @@ namespace ContactPhone
 
         public DataTable SelectAll()
         {
-            throw new NotImplementedException();
+            string query = "select * from telContact";
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+            DataTable data = new DataTable();
+            adapter.Fill(data);
+            return data;
         }
 
         public DataTable SelectRow(int contactId)
