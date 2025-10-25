@@ -34,12 +34,17 @@ namespace ContactPhone
 
         private void dgContacts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+           
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAddContact_Click(object sender, EventArgs e)
         {
-
+            frmAddOrEdit frm = new frmAddOrEdit();
+            frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                BindGrid();
+            }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
