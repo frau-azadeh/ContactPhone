@@ -10,16 +10,21 @@ using System.Windows.Forms;
 
 namespace ContactPhone
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form 
+ 
     {
+        IContactsRepository repository;
+
         public MainForm()
         {
             InitializeComponent();
+            repository = new ContactsRepository();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-
+            dgContacts.DataSource = repository.SelectAll();
         }
+
+      
     }
 }
