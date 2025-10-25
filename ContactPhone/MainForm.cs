@@ -22,6 +22,11 @@ namespace ContactPhone
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            BindGrid();
+        }
+
+        private void BindGrid()
+        {
             dgContacts.AutoGenerateColumns = false;
 
             dgContacts.DataSource = repository.SelectAll();
@@ -30,6 +35,16 @@ namespace ContactPhone
         private void dgContacts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            BindGrid();
         }
     }
 }
