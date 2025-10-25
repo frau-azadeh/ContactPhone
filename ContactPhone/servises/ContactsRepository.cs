@@ -22,7 +22,7 @@ namespace ContactPhone
 
         public DataTable SelectAll()
         {
-            string query = "select * from telContact";
+            string query = "select * from contact_number";
             SqlConnection connection = new SqlConnection(connectionString);
             SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
             DataTable data = new DataTable();
