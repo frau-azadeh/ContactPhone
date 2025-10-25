@@ -38,6 +38,8 @@
             this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telephon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddContact = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgContacts)).BeginInit();
             this.SuspendLayout();
@@ -133,11 +135,33 @@
             this.telephon.Name = "telephon";
             this.telephon.ReadOnly = true;
             // 
+            // btnAddContact
+            // 
+            this.btnAddContact.Location = new System.Drawing.Point(12, 1);
+            this.btnAddContact.Name = "btnAddContact";
+            this.btnAddContact.Size = new System.Drawing.Size(91, 39);
+            this.btnAddContact.TabIndex = 3;
+            this.btnAddContact.Text = "افزودن";
+            this.btnAddContact.UseVisualStyleBackColor = true;
+            this.btnAddContact.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(120, 1);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(91, 39);
+            this.btnRefresh.TabIndex = 4;
+            this.btnRefresh.Text = "به روز رسانی";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(778, 549);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnAddContact);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.menuStrip1);
@@ -169,6 +193,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn address;
         private System.Windows.Forms.DataGridViewTextBoxColumn mobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn telephon;
+        private System.Windows.Forms.Button btnAddContact;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 
