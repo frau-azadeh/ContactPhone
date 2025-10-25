@@ -17,7 +17,30 @@ namespace ContactPhone
 
         public bool Insert(string firstName, string lastName, string address, string mobile, string telephon)
         {
-            throw new NotImplementedException();
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                
+                string query = "Insert into contact_number(firstName, lastName, address, telephon, mobile) values(@firstName,@lastName,@address,@telephon,@mobile)";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@firstName",firstName);
+                command.Parameters.AddWithValue("@lastName", lastName);
+                command.Parameters.AddWithValue("@address", address);
+                command.Parameters.AddWithValue("@telephon", telephon);
+                command.Parameters.AddWithValue("@mobile", mobile);
+                connection.Open();
+                command.ExecuteNonQuery();
+                
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public DataTable SelectAll()
