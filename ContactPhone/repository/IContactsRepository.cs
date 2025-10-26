@@ -14,6 +14,7 @@ namespace ContactPhone
         bool Delete(int contactId);
         DataTable SelectAll();
         DataTable SelectRow(int contactId);
+        DataTable Search(string parameter);
 
        
     }

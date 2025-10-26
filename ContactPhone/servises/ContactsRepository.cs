@@ -63,6 +63,19 @@ namespace ContactPhone
                 connection.Close();
             }
         }
+        public DataTable Search(string parameter)
+        {
+            string query = "SELECT * FROM contact_number WHERE firstName LIKE @parameter OR lastName LIKE @parameter";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@parameter", "%" + parameter + "%");
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                return data;
+            }
+        }
+
 
         public DataTable SelectAll()
         {
