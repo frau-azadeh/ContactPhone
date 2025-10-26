@@ -28,7 +28,7 @@ namespace ContactPhone
         private void BindGrid()
         {
             dgContacts.AutoGenerateColumns = false;
-
+            dgContacts.Columns[0].Visible = false;
             dgContacts.DataSource = repository.SelectAll();
         }
 
@@ -58,11 +58,15 @@ namespace ContactPhone
             {
                 string name = dgContacts.CurrentRow.Cells[1].Value.ToString();
                 string family = dgContacts.CurrentRow.Cells[2].Value.ToString();
-                if (MessageBox.Show("؟آیا از حذف این شخص مطمن هستید", "توجه", MessageBoxButtons.YesNo) == DialogResult.Yes) ;
+                string fullName = name + " " + family;
+                if (MessageBox.Show($"؟آیا از حذف {fullName} مطمن هستید", "توجه", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                }
             }
             else
             {
-                MessageBox.Show("لطفا یک شخص را از لیست انتخاب کنید")
+                MessageBox.Show("لطفا یک شخص را از لیست انتخاب کنید");
             }
         }
     }
