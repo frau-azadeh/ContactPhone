@@ -28,7 +28,7 @@ namespace ContactPhone
         private void BindGrid()
         {
             dgContacts.AutoGenerateColumns = false;
-
+            dgContacts.Columns[0].Visible = false;
             dgContacts.DataSource = repository.SelectAll();
         }
 
@@ -50,6 +50,26 @@ namespace ContactPhone
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             BindGrid();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if(dgContacts.CurrentRow != null)
+            {
+                string name = dgContacts.CurrentRow.Cells[1].Value.ToString();
+                string family = dgContacts.CurrentRow.Cells[2].Value.ToString();
+                string fullName = name + " " + family;
+                if (MessageBox.Show($"؟آیا از حذف {fullName} مطمن هستید", "توجه", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    int contactId = int.Parse(dgContacts.CurrentRow.Cells[0].Value.ToString());
+                    repository.Delete(contactId);
+                    BindGrid();
+                }
+            }
+            else
+            {
+                MessageBox.Show("لطفا یک شخص را از لیست انتخاب کنید");
+            }
         }
     }
 }

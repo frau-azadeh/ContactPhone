@@ -12,7 +12,28 @@ namespace ContactPhone
         private string connectionString = "Data Source=.; initial Catalog = telContact; Integrated Security=true";
         public bool Delete(int contactId)
         {
-            throw new NotImplementedException();
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                string query = "Delete from contact_number where contactId=@id";
+                SqlCommand command = new SqlCommand(query,connection);
+                command.Parameters.AddWithValue("@id", contactId);
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+           
+
+
+            }
         }
 
         public bool Insert(string firstName, string lastName, string address, string mobile, string telephon)
