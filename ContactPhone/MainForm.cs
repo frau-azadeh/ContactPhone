@@ -52,9 +52,18 @@ namespace ContactPhone
             BindGrid();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            if(dgContacts.CurrentRow != null)
+            {
+                string name = dgContacts.CurrentRow.Cells[1].Value.ToString();
+                string family = dgContacts.CurrentRow.Cells[2].Value.ToString();
+                if (MessageBox.Show("؟آیا از حذف این شخص مطمن هستید", "توجه", MessageBoxButtons.YesNo) == DialogResult.Yes) ;
+            }
+            else
+            {
+                MessageBox.Show("لطفا یک شخص را از لیست انتخاب کنید")
+            }
         }
     }
 }
