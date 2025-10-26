@@ -88,5 +88,15 @@ namespace ContactPhone
 
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textSearch_TextChanged(object sender, EventArgs e)
+        {
+            dgContacts.DataSource = repository.Search(textSearch.Text);
+        }
     }
 }
