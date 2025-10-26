@@ -76,12 +76,42 @@ namespace ContactPhone
 
         public DataTable SelectRow(int contactId)
         {
-            throw new NotImplementedException();
+            string query = "select * from contact_number where contactId = " + contactId;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+            DataTable data = new DataTable();
+            adapter.Fill(data);
+            return data;
+
         }
 
         public bool Update(int contactId, string firstName, string lastName, string address, string mobile, string telephon)
         {
-            throw new NotImplementedException();
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                string query = "Update contact_number set firstName=@firstName, lastName= @lastName, address=@address, mobile=@mobile, telephon=@telephon where contactId=@contactId";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@contactId", contactId);
+                command.Parameters.AddWithValue("@firstName", firstName);
+                command.Parameters.AddWithValue("@lastName", lastName);
+                command.Parameters.AddWithValue("@address", address);
+                command.Parameters.AddWithValue("@mobile", mobile);
+                command.Parameters.AddWithValue("@telephon", telephon);
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+
+
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }
