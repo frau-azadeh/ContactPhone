@@ -14,6 +14,8 @@ namespace ContactPhone
        
     {
         IContactsRepository repositor;
+        public int contactId = 0;
+
         public frmAddOrEdit()
         {
             InitializeComponent();
@@ -28,10 +30,24 @@ namespace ContactPhone
 
         private void frmAddOrEdit_Load(object sender, EventArgs e)
         {
-            this.Text = "افزودن شخص جدید";
+            if (contactId == 0)
+            {
+                this.Text = ("افزودن شخص جدید");
+            }
+            else
+            {
+                this.Text = "ویرایش شخص";
+                DataTable dt = repositor.SelectRow(contactId);
+                textName.Text = dt.Rows[0][1].ToString();
+                textFamily.Text = dt.Rows[0][2].ToString();
+                textAddress.Text = dt.Rows[0][3].ToString();
+                textMobile.Text = dt.Rows[0][4].ToString();
+                textPhon.Text = dt.Rows[0][5].ToString();
+                btnSubmit.Text = "ویرایش";            }
         }
+     
 
-         bool ValidateInputs()
+    bool ValidateInputs()
         {
             bool isValid = true;
             if(textName.Text == "")
@@ -70,7 +86,15 @@ namespace ContactPhone
         {
             if (ValidateInputs())
             {
-                bool isSuccess = repositor.Insert(textName.Text, textFamily.Text, textAddress.Text, textMobile.Text, textPhon.Text);
+                bool isSuccess;
+                if(contactId == 0)
+                {
+                    isSuccess = repositor.Insert(textName.Text, textFamily.Text, textAddress.Text, textMobile.Text, textPhon.Text);
+                }
+                else
+                {
+                    isSuccess = repositor.Update(contactId, textName.Text, textFamily.Text, textAddress.Text, textMobile.Text, textPhon.Text);
+                }
                 if (isSuccess == true)
                 {
                     MessageBox.Show("عملیات با موفقیت قیت شد", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
